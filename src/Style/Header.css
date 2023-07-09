@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.header{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(172, 172, 172);
+}
+.links{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 50%;
+    height: 100%;
+}
+.links li{
+    list-style-type: none;
+    display: inline;
+    font-weight: 600;
+}
+.links li a{
+    text-decoration: none;
+    color: black;
+}
+.login{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.login li{
+    list-style-type: none;
+}

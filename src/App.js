@@ -1,4 +1,3 @@
-import './App.css';
 import ShopingPage from './Components/ShopingPage';
 
 function App() {
