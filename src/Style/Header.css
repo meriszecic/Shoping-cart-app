@@ -29,10 +29,42 @@
 }
 .login{
     width: 50%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
 .login li{
     list-style-type: none;
+}
+.login input{
+    width: 200%;
+    height: 4vh;
+    padding: 3%;
+}
+.search{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+}
+.search input{
+    font-size: medium;
+    border-radius: 10px;
+    border: 1px solid grey;
+}
+.search button{
+    width: 20%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.dugme-login button{
+    width: 200px;
+    height: 5vh;
+    background-color: rgb(86, 170, 255);
+    border: none;
+    font-size: large;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
 }

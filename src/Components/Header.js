@@ -11,8 +11,8 @@ export default function Header(){
                 <li><a href="#">CONTACT US</a></li>
             </ul>
             <ul className='login'>
-                <li><input placeholder='search for prodict'></input></li>
-                <li><button>Login</button></li>
+                <li className='search'><input placeholder='search for prodict'></input><button>🔍</button></li>
+                <li className='dugme-login'><button>Login</button></li>
             </ul>
         </div>
         </>
