@@ -23,6 +23,10 @@
     display: inline;
     font-weight: 600;
 }
+.links li a:hover{
+    color: rgb(86, 170, 255);
+    transition: .3s;
+}
 .links li a{
     text-decoration: none;
     color: black;
@@ -67,4 +71,10 @@
     border-radius: 10px;
     cursor: pointer;
     color: white;
+}
+.dugme-login button:hover{
+    background-color: rgb(230, 230, 230);
+    color: rgb(86, 170, 255);
+    border: gray 1px solid;
+    transition: 0.3s;
 }

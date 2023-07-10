@@ -1,5 +1,19 @@
+import { useEffect, useState } from 'react'
 import '../Style/Header.css'
 export default function Header(){
+    const [search, setSearch] = useState('')
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        fetch('https://jsonplaceholder.typicode.com/photos')
+        .then(response => response.json())
+        .then(json => setData(json))
+    }, [])
+
+    // const handleSearch = () => {
+    //      const filteredData = data.filter(())
+    // }
+
     return (
         <>
         <div className='header'>
@@ -11,10 +25,12 @@ export default function Header(){
                 <li><a href="#">CONTACT US</a></li>
             </ul>
             <ul className='login'>
-                <li className='search'><input placeholder='search for prodict'></input><button>🔍</button></li>
+                <li className='search'><input value={search} onChange={e => setSearch(e.target.value)} placeholder='search for product'></input><button>🔍</button></li>
                 <li className='dugme-login'><button>Login</button></li>
             </ul>
         </div>
+
+        {data?.map((photo) => (<div key={photo.div}><p>{photo.title}</p></div>))}
         </>
     )
 }
