@@ -10,9 +10,20 @@ export default function Header(){
         .then(json => setData(json))
     }, [])
 
-    // const handleSearch = () => {
-    //      const filteredData = data.filter(())
-    // }
+    // const handleChange = (e) => {
+    //     e.preventDefault();
+    //     setSearch(e.target.value);
+    //   };
+      
+    //   if (search.length > 0) {
+    //       data.filter((country) => {
+    //       return country.title.match(search);
+    //   });
+    //   }
+
+    //   const handleSearch = () => {
+    //     const filteredData = data.filter((photo) => (photo.title.match(search)))
+    //   }
 
     return (
         <>
@@ -25,12 +36,13 @@ export default function Header(){
                 <li><a href="#">CONTACT US</a></li>
             </ul>
             <ul className='login'>
-                <li className='search'><input value={search} onChange={e => setSearch(e.target.value)} placeholder='search for product'></input><button>🔍</button></li>
+                <li className='search'><input value={search} onChange={e => setSearch(e.target.value)} placeholder='search for product'></input>
+                <button >🔍</button></li>
                 <li className='dugme-login'><button>Login</button></li>
             </ul>
         </div>
 
-        {data?.map((photo) => (<div key={photo.div}><p>{photo.title}</p></div>))}
+        {/* {data?.map((photo) => (<div key={photo.div}><p>{photo.title}</p></div>))} */}
         </>
     )
 }
