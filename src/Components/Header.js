@@ -32,7 +32,7 @@ export default function Header(){
                 <li><a href="#">PRODUCTS</a></li>
                 <li><a href="#">COMPANY</a></li>
                 <li><a href="#">PARTNETS</a></li>
-                <li><a href="#">NEWS</a></li>
+                <li><select><option disabled>POL</option><option>Muski</option><option>Zenski</option></select></li>
                 <li><a href="#">CONTACT US</a></li>
             </ul>
             <ul className='login'>
