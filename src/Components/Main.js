@@ -218,7 +218,7 @@ export default function Main (){
     const [data, setData] = useState(datas)
 
     return (
-        <>
+        <div className='main-container'>
         <div className='container'>
             {data.map((product) => (<div className='produkti' key={product.id}>
                 <img src={product.slika} alt='slika proizvoda'></img>
@@ -227,6 +227,6 @@ export default function Main (){
                 <p>{product.opis}</p>
                 </div>))}
         </div>
-        </>
+        </div>
     )
 }

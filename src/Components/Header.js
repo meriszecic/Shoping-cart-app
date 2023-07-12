@@ -4,12 +4,6 @@ export default function Header(){
     const [search, setSearch] = useState('')
     const [data, setData] = useState([])
 
-    useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/photos')
-        .then(response => response.json())
-        .then(json => setData(json))
-    }, [])
-
     // const handleChange = (e) => {
     //     e.preventDefault();
     //     setSearch(e.target.value);
