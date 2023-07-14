@@ -248,7 +248,9 @@ const datas =
     export default function Main() {
       const [data, setData] = useState(datas);
       const [expandedItems, setExpandedItems] = useState([]);
-    
+      const [currentPage, setCurrentPage] = useState(1);
+      const [productsPerPage, setProductsPerPage] = useState(10)
+
       const toggleExpand = (itemId) => {
         if (expandedItems.includes(itemId)) {
           setExpandedItems(expandedItems.filter((id) => id !== itemId));
@@ -256,6 +258,15 @@ const datas =
           setExpandedItems([...expandedItems, itemId]);
         }
       };
+
+      const indexOfLastPage = currentPage * productsPerPage;
+      const indexOfFirstPage = indexOfLastPage - productsPerPage;
+      const currentProducts = data.slice(indexOfFirstPage, indexOfLastPage)
+      const totalPages = Math.ceil(data.length / productsPerPage)  
+
+      const onPageChange = (pageNumber) => {
+        setCurrentPage(pageNumber)
+      }
     
       return (
         <div className="main-container">
@@ -287,6 +298,17 @@ const datas =
                 )}
               </div>
             ))}
+            <div className="dugmici">
+        {Array.from(Array(totalPages).keys()).map((pageNumber) => (
+          <button
+            key={pageNumber}
+            onClick={() => onPageChange(pageNumber + 1)}
+            disabled={currentPage === pageNumber + 1}
+          >
+            {pageNumber + 1}
+          </button>
+        ))}
+      </div>
           </div>
         </div>
       );
