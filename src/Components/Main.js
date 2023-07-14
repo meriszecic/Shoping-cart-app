@@ -249,7 +249,7 @@ const datas =
       const [data, setData] = useState(datas);
       const [expandedItems, setExpandedItems] = useState([]);
       const [currentPage, setCurrentPage] = useState(1);
-      const [productsPerPage, setProductsPerPage] = useState(10)
+      const [productsPerPage, setProductsPerPage] = useState(9)
 
       const toggleExpand = (itemId) => {
         if (expandedItems.includes(itemId)) {
@@ -271,7 +271,7 @@ const datas =
       return (
         <div className="main-container">
           <div className="container">
-            {data.map((product) => (
+            {currentProducts.map((product) => (
               <div className="produkti" key={product.id}>
                 <img
                   src={product.slika}
@@ -298,7 +298,8 @@ const datas =
                 )}
               </div>
             ))}
-            <div className="dugmici">
+          </div>
+      <div className="dugmici">
         {Array.from(Array(totalPages).keys()).map((pageNumber) => (
           <button
             key={pageNumber}
@@ -309,7 +310,6 @@ const datas =
           </button>
         ))}
       </div>
-          </div>
         </div>
       );
     }

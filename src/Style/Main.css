@@ -5,10 +5,11 @@
 }
 .main-container{
     width: 100%;
-    height: 200vh;
+    height: 150vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .container{
@@ -72,4 +73,23 @@
 .showLess button:hover{
     opacity: 50%;
     transition: .5s;
+}
+.dugmici{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+.dugmici{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.dugmici button{
+    border: none;
+    color: black;
+    cursor: pointer;
+    background-color: transparent;
+    margin: 20px 0 100px 0;
 }
