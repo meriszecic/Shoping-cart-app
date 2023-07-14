@@ -197,7 +197,7 @@ const datas =
       },
       {
         "id": 25,
-        "ime": "Cipele sa visokom potpeticom za svečane trenutke",
+        "ime": "Cipele sa visokom potpeticom",
         "slika": "https://images.pexels.com/photos/3768005/pexels-photo-3768005.jpeg",
         "cena": 15.99,
         "opis": "Elegantne cipele sa visokom potpeticom za svečane trenutke.",
@@ -245,41 +245,49 @@ const datas =
       }
     ]
 
-export default function Main (){
-    const [data, setData] = useState(datas)
-    const [showMore, setShowMore] = useState(false)
-
-    // const handleShowMore = (e) => {
-    //   if(showMore){
-    //     setShowMore(false)
-    //     return (
-    //       <>
-    //       <p>{e}</p>
-    //       <button>Show Less</button>
-    //       </>
-    //     )
-    //   }else{
-    //     setShowMore(true)
-    //     return (
-    //       <>
-    //       <button>Show More</button>
-    //       </>
-    //     )
-    //   }
-    // }
-
-    return (
-        <div className='main-container'>
-        <div className='container'>
-            {data.map((product) => (<div className='produkti' key={product.id}>
-                <img src={product.slika} width='200px' height='200px' alt='slika proizvoda'></img>
+    export default function Main() {
+      const [data, setData] = useState(datas);
+      const [expandedItems, setExpandedItems] = useState([]);
+    
+      const toggleExpand = (itemId) => {
+        if (expandedItems.includes(itemId)) {
+          setExpandedItems(expandedItems.filter((id) => id !== itemId));
+        } else {
+          setExpandedItems([...expandedItems, itemId]);
+        }
+      };
+    
+      return (
+        <div className="main-container">
+          <div className="container">
+            {data.map((product) => (
+              <div className="produkti" key={product.id}>
+                <img
+                  src={product.slika}
+                  width="300px"
+                  height="300px"
+                  alt="slika proizvoda"
+                />
                 <h1>{product.ime}</h1>
                 <h2>{product.cena}</h2>
                 <p>{product.opis}</p>
-                {/* <button onClick={() => handleShowMore(product.dodatanOpis)}>Show More</button> */}
-                {showMore ? <div key={product.id}>{product.dodatanOpis}<button onClick={() => setShowMore(!showMore)}>Show Less</button></div> : <div><button onClick={() => setShowMore(!showMore)}>Show More</button></div>}
-                </div>))}
+                {expandedItems.includes(product.id) ? (
+                  <div className='showLess' key={product.id}>
+                   <p>{product.dodatanOpis}</p><br></br>
+                    <button onClick={() => toggleExpand(product.id)}>
+                      Show Less
+                    </button>
+                  </div>
+                ) : (
+                  <div className='showMore'>
+                    <button onClick={() => toggleExpand(product.id)}>
+                      Show More
+                    </button>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
-        </div>
-    )
-}
+      );
+    }
