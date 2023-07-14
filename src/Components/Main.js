@@ -277,7 +277,7 @@ export default function Main (){
                 <h2>{product.cena}</h2>
                 <p>{product.opis}</p>
                 {/* <button onClick={() => handleShowMore(product.dodatanOpis)}>Show More</button> */}
-                {showMore ? <>{product.dodatanOpis}<button onClick={() => setShowMore(!showMore)}>Show Less</button></> : <><button onClick={() => setShowMore(!showMore)}>Show More</button></>}
+                {showMore ? <div key={product.id}>{product.dodatanOpis}<button onClick={() => setShowMore(!showMore)}>Show Less</button></div> : <div><button onClick={() => setShowMore(!showMore)}>Show More</button></div>}
                 </div>))}
         </div>
         </div>
