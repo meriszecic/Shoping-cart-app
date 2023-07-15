@@ -2,22 +2,6 @@ import { useEffect, useState } from 'react'
 import '../Style/Header.css'
 export default function Header(){
     const [search, setSearch] = useState('')
-    const [data, setData] = useState([])
-
-    // const handleChange = (e) => {
-    //     e.preventDefault();
-    //     setSearch(e.target.value);
-    //   };
-      
-    //   if (search.length > 0) {
-    //       data.filter((country) => {
-    //       return country.title.match(search);
-    //   });
-    //   }
-
-    //   const handleSearch = () => {
-    //     const filteredData = data.filter((photo) => (photo.title.match(search)))
-    //   }
 
     return (
         <>
@@ -26,7 +10,7 @@ export default function Header(){
                 <li><a href="#"></a></li>
                 <li><a href="#">COMPANY</a></li>
                 <li><a href="#">PARTNETS</a></li>
-                <li><select><option selected disabled>POL</option><option>Muski</option><option>Zenski</option></select></li>
+                <li><select><option selected disabled>POL</option><option>Muski</option><option>Zenski</option><option>Uniseks</option></select></li>
                 <li><a href="#">CONTACT US</a></li>
             </ul>
             <ul className='login'>
@@ -36,7 +20,6 @@ export default function Header(){
             </ul>
         </div>
 
-        {/* {data?.map((photo) => (<div key={photo.div}><p>{photo.title}</p></div>))} */}
         </>
     )
 }
