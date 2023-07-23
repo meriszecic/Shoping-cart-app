@@ -6,7 +6,7 @@ import "../App.css";
 export default function ShopingPage (){
     return (
      <div className="all">
-        <Header></Header>
+        {/* <Header></Header> */}
         <Main></Main>
         <Footer></Footer>
     </div>

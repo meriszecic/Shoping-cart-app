@@ -35,7 +35,7 @@
 }
 .produkti img:hover{
     width: 350px;
-    height: 350px;
+    height: 300px;
     transition: 1s;
     cursor: pointer;  
 }
