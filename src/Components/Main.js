@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import '../Style/Header.css'
 import '../Style/Main.css'
 
 const datas = 
@@ -279,6 +280,7 @@ const datas =
       const [data, setData] = useState(datas);
       const [expandedItems, setExpandedItems] = useState([]);
       const [currentPage, setCurrentPage] = useState(1);
+      const [search, setSearch] = useState('')
       const [productsPerPage, setProductsPerPage] = useState(9)
 
       const toggleExpand = (itemId) => {
@@ -289,6 +291,8 @@ const datas =
         }
       };
 
+      
+
       const indexOfLastPage = currentPage * productsPerPage;
       const indexOfFirstPage = indexOfLastPage - productsPerPage;
       const currentProducts = data.slice(indexOfFirstPage, indexOfLastPage)
@@ -297,18 +301,47 @@ const datas =
       const onPageChange = (pageNumber) => {
         setCurrentPage(pageNumber)
       }
+
+      const handleChange = (e) => {
+        e.preventDefault();
+        setSearch(e.target.value);
+      };
+      
+      if (search.length > 0) {
+          data.filter((product) => {
+          return product.ime.match(setSearch);
+      });
+      }
     
       return (
+        <>
+        <div className='header'>
+            <ul className='links'>
+                <li><a href="#">COMPANY</a></li>
+                <li><a href="#">PARTNETS</a></li>
+                <li><select><option selected >ALL</option>
+                <option value='muski'>MUSKI</option>
+                <option value='zenski'>ZENSKI</option>
+                <option value='uniseks'>UNISEKS</option></select
+                ></li>
+                <li><a href="#">CONTACT US</a></li>
+            </ul>
+            <ul className='login'>
+                <li className='search'><input type='text' value={search} onChange={handleChange} placeholder='search for product'></input>
+                <button >🔍</button></li>
+                <li className='dugme-login'><button>Login</button></li>
+            </ul>
+        </div>
         <div className="main-container">
           <div className="container">
             {currentProducts.map((product) => (
               <div className="produkti" key={product.id}>
                 <img
                   src={product.slika}
-                  width="300px"
-                  height="300px"
+                  width="250px"
+                  height="250px"
                   alt="slika proizvoda"
-                />
+                  />
                 <h1>{product.ime}</h1>
                 <h2>{product.cena}</h2>
                 <p>{product.opis}</p>
@@ -332,14 +365,15 @@ const datas =
       <div className="dugmici">
         {Array.from(Array(totalPages).keys()).map((pageNumber) => (
           <button
-            key={pageNumber}
-            onClick={() => onPageChange(pageNumber + 1)}
-            disabled={currentPage === pageNumber + 1}
+          key={pageNumber}
+          onClick={() => onPageChange(pageNumber + 1)}
+          disabled={currentPage === pageNumber + 1}
           >
             {pageNumber + 1}
           </button>
         ))}
       </div>
         </div>
+        </>
       );
     }
