@@ -8,7 +8,7 @@ export default function ShopingPage (){
      <div className="all">
         <Header></Header>
         <Main></Main>
-        {/* <Footer></Footer> */}
+        <Footer></Footer>
     </div>
     );
 }
