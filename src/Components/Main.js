@@ -276,43 +276,43 @@ const datas =
   }
 ]
 
-    export default function Main() {
-      const [data, setData] = useState(datas);
-      const [expandedItems, setExpandedItems] = useState([]);
-      const [currentPage, setCurrentPage] = useState(1);
-      const [search, setSearch] = useState('')
-      const [productsPerPage, setProductsPerPage] = useState(9)
+export default function Main() {
+  const [data, setData] = useState(datas);
+  const [expandedItems, setExpandedItems] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [search, setSearch] = useState('');
+  const [productsPerPage, setProductsPerPage] = useState(9);
 
-      const toggleExpand = (itemId) => {
-        if (expandedItems.includes(itemId)) {
-          setExpandedItems(expandedItems.filter((id) => id !== itemId));
-        } else {
-          setExpandedItems([...expandedItems, itemId]);
-        }
-      };
+  const toggleExpand = (itemId) => {
+    if (expandedItems.includes(itemId)) {
+      setExpandedItems(expandedItems.filter((id) => id !== itemId));
+    } else {
+      setExpandedItems([...expandedItems, itemId]);
+    }
+  };
 
-      
+  const indexOfLastPage = currentPage * productsPerPage;
+  const indexOfFirstPage = indexOfLastPage - productsPerPage;
 
-      const indexOfLastPage = currentPage * productsPerPage;
-      const indexOfFirstPage = indexOfLastPage - productsPerPage;
-      const currentProducts = data.slice(indexOfFirstPage, indexOfLastPage)
-      const totalPages = Math.ceil(data.length / productsPerPage)  
+  const filteredProducts = data.filter((product) =>
+    product.ime.toLowerCase().includes(search.toLowerCase())
+  );
 
-      const onPageChange = (pageNumber) => {
-        setCurrentPage(pageNumber)
-      }
+  const currentProducts = filteredProducts.slice(
+    indexOfFirstPage,
+    indexOfLastPage
+  );
 
-      const handleChange = (e) => {
-        e.preventDefault();
-        setSearch(e.target.value);
-      };
-      
-      if (search.length > 0) {
-          data.filter((product) => {
-          return product.ime.match(setSearch);
-      });
-      }
-    
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+
+  const onPageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+    setCurrentPage(1); // Reset current page when the search changes
+  };
       return (
         <>
         <div className='header'>
@@ -327,53 +327,64 @@ const datas =
                 <li><a href="#">CONTACT US</a></li>
             </ul>
             <ul className='login'>
-                <li className='search'><input type='text' value={search} onChange={handleChange} placeholder='search for product'></input>
-                <button >🔍</button></li>
+            <li className='search'>
+              <div>
+        <input
+          type='text'
+          value={search}
+          onChange={handleChange}
+          placeholder='search for product'
+          />
+          </div>
+          <button>🔍</button>
+      </li>
                 <li className='dugme-login'><button>Login</button></li>
             </ul>
         </div>
-        <div className="main-container">
-          <div className="container">
-            {currentProducts.map((product) => (
-              <div className="produkti" key={product.id}>
-                <img
-                  src={product.slika}
-                  width="250px"
-                  height="250px"
-                  alt="slika proizvoda"
-                  />
-                <h1>{product.ime}</h1>
-                <h2>{product.cena}</h2>
-                <p>{product.opis}</p>
-                {expandedItems.includes(product.id) ? (
-                  <div className='showLess' key={product.id}>
-                   <p>{product.dodatanOpis}</p><br></br>
-                    <button onClick={() => toggleExpand(product.id)}>
-                      Show Less
-                    </button>
-                  </div>
-                ) : (
-                  <div className='showMore'>
-                    <button onClick={() => toggleExpand(product.id)}>
-                      Show More
-                    </button>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-      <div className="dugmici">
-        {Array.from(Array(totalPages).keys()).map((pageNumber) => (
-          <button
-          key={pageNumber}
-          onClick={() => onPageChange(pageNumber + 1)}
-          disabled={currentPage === pageNumber + 1}
-          >
-            {pageNumber + 1}
-          </button>
-        ))}
-      </div>
+        <div className='main-container'>
+          <h1 className='h1'>All Products</h1>
+        <div className='container'>
+          {currentProducts.map((product) => (
+            <div className='produkti' key={product.id}>
+              <img
+                src={product.slika}
+                width='250px'
+                height='250px'
+                alt='slika proizvoda'
+              />
+              <h1>{product.ime}</h1>
+              <h2>{product.cena}</h2>
+              <p>{product.opis}</p>
+              {expandedItems.includes(product.id) ? (
+                <div className='showLess' key={product.id}>
+                  <p>{product.dodatanOpis}</p>
+                  <br></br>
+                  <button onClick={() => toggleExpand(product.id)}>
+                    Show Less
+                  </button>
+                </div>
+              ) : (
+                <div className='showMore'>
+                  <button onClick={() => toggleExpand(product.id)}>
+                    Show More
+                  </button>
+                </div>
+              )}
+            </div>
+          ))}
         </div>
-        </>
-      );
-    }
+        <div className='dugmici'>
+          {Array.from(Array(totalPages).keys()).map((pageNumber) => (
+            <button
+              key={pageNumber}
+              onClick={() => onPageChange(pageNumber + 1)}
+              disabled={currentPage === pageNumber + 1}
+            >
+              {pageNumber + 1}
+            </button>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+}
