@@ -5,15 +5,13 @@
 }
 .main-container{
     width: 100%;
-    min-height: 120vh;
-    max-height: 170vh;
+    min-height: 170vh;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-direction: column;
 }
 .h1{
-    margin: 3% 0 3% 0;
     font-size: 50px;
 }
 .container{
@@ -21,7 +19,7 @@
     height: 100%;
     display: flex;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-direction: row;
     flex-wrap: wrap;
 }
@@ -32,6 +30,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin: 0 0 2% 0;
 }
 .produkti img{
     transition: 1s;
@@ -95,7 +94,6 @@
     color: black;
     cursor: pointer;
     background-color: transparent;
-    margin: 100px 0 50px 0;
 }
 .search{
     display: flex;

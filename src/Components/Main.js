@@ -325,8 +325,8 @@ export default function Main() {
     <>
       <div className='header'>
         <ul className='links'>
-          <li><a href="#">COMPANY</a></li>
-          <li><a href="#">PARTNERS</a></li>
+          <li><a href="">COMPANY</a></li>
+          <li><a href="">PARTNERS</a></li>
           <li>
             <select onChange={handleGenderChange} value={selectedGender}>
               <option value='all'>ALL</option>
