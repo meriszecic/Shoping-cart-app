@@ -282,6 +282,7 @@ export default function Main() {
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState('');
   const [productsPerPage, setProductsPerPage] = useState(9);
+  const [selectedGender, setSelectedGender] = useState('all');
 
   const toggleExpand = (itemId) => {
     if (expandedItems.includes(itemId)) {
@@ -291,13 +292,19 @@ export default function Main() {
     }
   };
 
-  const indexOfLastPage = currentPage * productsPerPage;
-  const indexOfFirstPage = indexOfLastPage - productsPerPage;
+  const handleGenderChange = (e) => {
+    setSelectedGender(e.target.value);
+    setCurrentPage(1);
+  };
 
-  const filteredProducts = data.filter((product) =>
-    product.ime.toLowerCase().includes(search.toLowerCase())
+  const filteredProducts = data.filter(
+    (product) =>
+      product.ime.toLowerCase().includes(search.toLowerCase()) &&
+      (selectedGender === 'all' || product.pol === selectedGender)
   );
 
+  const indexOfLastPage = currentPage * productsPerPage;
+  const indexOfFirstPage = indexOfLastPage - productsPerPage;
   const currentProducts = filteredProducts.slice(
     indexOfFirstPage,
     indexOfLastPage
@@ -311,46 +318,50 @@ export default function Main() {
 
   const handleChange = (e) => {
     setSearch(e.target.value);
-    setCurrentPage(1); // Reset current page when the search changes
+    setCurrentPage(1);
   };
-      return (
-        <>
-        <div className='header'>
-            <ul className='links'>
-                <li><a href="#">COMPANY</a></li>
-                <li><a href="#">PARTNETS</a></li>
-                <li><select><option selected >ALL</option>
-                <option value='muski'>MUSKI</option>
-                <option value='zenski'>ZENSKI</option>
-                <option value='uniseks'>UNISEKS</option></select
-                ></li>
-                <li><a href="#">CONTACT US</a></li>
-            </ul>
-            <ul className='login'>
-            <li className='search'>
-              <div>
-        <input
-          type='text'
-          value={search}
-          onChange={handleChange}
-          placeholder='search for product'
-          />
-          </div>
-          <button>🔍</button>
-      </li>
-                <li className='dugme-login'><button>Login</button></li>
-            </ul>
-        </div>
-        <div className='main-container'>
-          <h1 className='h1'>All Products</h1>
-        <div className='container'>
+
+  return (
+    <>
+      <div className='header'>
+        <ul className='links'>
+          <li><a href="#">COMPANY</a></li>
+          <li><a href="#">PARTNERS</a></li>
+          <li>
+            <select onChange={handleGenderChange} value={selectedGender}>
+              <option value='all'>ALL</option>
+              <option value='muški'>MUSKI</option>
+              <option value='ženski'>ZENSKI</option>
+              <option value='uniseks'>UNISEKS</option>
+            </select>
+          </li>
+          <li><a href="#">CONTACT US</a></li>
+        </ul>
+        <ul className='login'>
+          <li className='search'>
+            <input
+              type='text'
+              value={search}
+              onChange={handleChange}
+              placeholder='search for product'
+            />
+            <button>🔍</button>
+          </li>
+          <li className='dugme-login'>
+            <button>Login</button>
+          </li>
+        </ul>
+      </div>
+      <div className="main-container">
+        <h1 className='h1'>{selectedGender} products</h1>
+        <div className="container">
           {currentProducts.map((product) => (
-            <div className='produkti' key={product.id}>
+            <div className="produkti" key={product.id}>
               <img
                 src={product.slika}
-                width='250px'
-                height='250px'
-                alt='slika proizvoda'
+                width="250px"
+                height="250px"
+                alt="slika proizvoda"
               />
               <h1>{product.ime}</h1>
               <h2>{product.cena}</h2>
