@@ -12,6 +12,47 @@ const datas =
     "opis": "Elegantan kožni prsluk za muškarce sa stilom.",
     "dodatanOpis": "Ovaj kožni prsluk je izrađen od visokokvalitetne kože, savršen za dodavanje elegancije i sofisticiranosti vašem izgledu.",
     "pol": "muški"
+  },{
+    "id": 31,
+    "ime": "Kožni prsluk",
+    "slika": "https://images.pexels.com/photos/3768005/pexels-photo-3768005.jpeg",
+    "cena": 19.99,
+    "opis": "Elegantan kožni prsluk za muškarce sa stilom.",
+    "dodatanOpis": "Ovaj kožni prsluk je izrađen od visokokvalitetne kože, savršen za dodavanje elegancije i sofisticiranosti vašem izgledu.",
+    "pol": "muški"
+  },{
+    "id": 32,
+    "ime": "Kožni prsluk",
+    "slika": "https://images.pexels.com/photos/3768005/pexels-photo-3768005.jpeg",
+    "cena": 19.99,
+    "opis": "Elegantan kožni prsluk za muškarce sa stilom.",
+    "dodatanOpis": "Ovaj kožni prsluk je izrađen od visokokvalitetne kože, savršen za dodavanje elegancije i sofisticiranosti vašem izgledu.",
+    "pol": "muški"
+  },
+  {
+    "id": 33,
+    "ime": "Kožni prsluk",
+    "slika": "https://images.pexels.com/photos/3768005/pexels-photo-3768005.jpeg",
+    "cena": 19.99,
+    "opis": "Elegantan kožni prsluk za muškarce sa stilom.",
+    "dodatanOpis": "Ovaj kožni prsluk je izrađen od visokokvalitetne kože, savršen za dodavanje elegancije i sofisticiranosti vašem izgledu.",
+    "pol": "muški"
+  },{
+    "id": 34,
+    "ime": "Kožni prsluk",
+    "slika": "https://images.pexels.com/photos/3768005/pexels-photo-3768005.jpeg",
+    "cena": 19.99,
+    "opis": "Elegantan kožni prsluk za muškarce sa stilom.",
+    "dodatanOpis": "Ovaj kožni prsluk je izrađen od visokokvalitetne kože, savršen za dodavanje elegancije i sofisticiranosti vašem izgledu.",
+    "pol": "muški"
+  },{
+    "id": 35,
+    "ime": "Kožni prsluk",
+    "slika": "https://images.pexels.com/photos/3768005/pexels-photo-3768005.jpeg",
+    "cena": 19.99,
+    "opis": "Elegantan kožni prsluk za muškarce sa stilom.",
+    "dodatanOpis": "Ovaj kožni prsluk je izrađen od visokokvalitetne kože, savršen za dodavanje elegancije i sofisticiranosti vašem izgledu.",
+    "pol": "muški"
   },
   {
     "id": 2,
