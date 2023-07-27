@@ -380,12 +380,15 @@ export default function Main() {
         </ul>
         <ul className='login'>
           <li className='search'>
+            <div>
+
             <input
               type='text'
               value={search}
               onChange={handleChange}
               placeholder='search for product'
-            />
+              />
+              </div>
             <button>🔍</button>
           </li>
           <li className='dugme-login'>
